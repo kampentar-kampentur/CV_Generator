@@ -314,7 +314,7 @@ a {
 }
 
 .templates-main {
-    width: calc(100% - 210mm);
+    width: calc(100% - 210.1mm);
     border-left: 3px solid #BDBDBD;
     padding: 32px;
 }

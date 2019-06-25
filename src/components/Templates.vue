@@ -1,6 +1,6 @@
 <template>
   <div class="templates">
-    <Resume ref="resume" :templateStyle="templateStyle"/>
+    <Resume ref="resume" :templateStyle="templateStyle" :key="templateStyle.js"/>
 
     <div class="templates-main">
       <div class="change-template-wrapper">
@@ -34,7 +34,8 @@ export default {
     return {
       personalDate: this.$store.state.personalDate,
       templates: styles,
-      templateStyle: styles.First
+      templateStyle: styles.First,
+      count: 1
     };
   },
   methods: {
@@ -62,6 +63,7 @@ export default {
     },
     changeTemplate(template) {
       this.templateStyle = template;
+      this.count++;
     }
   }
 };

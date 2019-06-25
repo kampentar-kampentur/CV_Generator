@@ -101,7 +101,7 @@ export default {
       visibleAddSocialModal: true,
       social: {
         twitter: {
-          lable: "Twitter"
+          label: "Twitter"
         }
       },
       visibleSocial: []

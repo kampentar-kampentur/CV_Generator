@@ -1,8 +1,9 @@
 <template>
-  <div id="ready-cv" :class="templateStyle.class">
-    <template v-if="templateStyle">
-      <link rel="stylesheet" :href="templateStyle.url">
+  <div id="ready-cv" :class="templateStyle.class" class="ready-cv">
+    <template v-if="templateStyle.css">
+      <link rel="stylesheet" :href="templateStyle.css">
     </template>
+
     <header class="resume-header clearfix">
       <span
         class="fullName"
@@ -29,19 +30,26 @@
           </div>
         </div>
       </div>
-      <!-- <div class="personalInfo" v-if="personalDate.personalInfo.visible">
-      <span class="address">Address: {{personalDate.personalInfo.address}}</span>
-      <span class="phone">Number Phone: {{personalDate.personalInfo.phone}}</span>
-      <div class="socials">
-        <span
-          class="social"
-          :class="key"
-          v-for="(social, key) of personalDate.personalInfo.social"
-          :key="key"
-        >{{key + ': ' +social}}</span>
-      </div>
-      </div>-->
     </main>
+    <aside class="resume-aside">
+      <div class="personalInfo" v-if="personalDate.personalInfo.visible">
+        <h2>Personal Info</h2>
+        <span class="address">
+          <h3>Address:</h3>
+          {{personalDate.personalInfo.address}}
+        </span>
+        <span class="phone">Number Phone: {{personalDate.personalInfo.phone}}</span>
+        <div class="socials">
+          <span
+            class="social"
+            :class="key"
+            v-for="(social, key) of personalDate.personalInfo.social"
+            :key="key"
+          >{{key + ': ' +social}}</span>
+        </div>
+      </div>
+    </aside>
+    <div id="scripts"></div>
   </div>
 </template>
 
@@ -58,6 +66,14 @@ export default {
       personalDate: this.$store.state.personalDate,
       photo: this.$store.state.personalDate.personalInfo.photo
     };
+  },
+  mounted() {
+    if (this.templateStyle.js) {
+      let t = document.getElementById("scripts");
+      let script = document.createElement("script");
+      script.src = this.templateStyle.js;
+      t.appendChild(script);
+    }
   }
 };
 </script>
