@@ -31,8 +31,8 @@ export default new Vuex.Store({
         address: '',
         phone: '',
         social: {
-          twitter: 'sfafdsfds ',
-          github: 'asdfasdfas',
+          twitter: 'yummyanime.club/catalog/item/propavshie-fei ',
+          github: 'yummyanime.club/catalog/item/propavshie-fei',
         },
         visible: true,
       },

@@ -116,3 +116,10 @@
     margin-bottom: 5px;
 }
 
+.resume-aside>* h2{
+    border-bottom: 1px solid #d9dada
+}
+
+.resume-aside>*>*{
+    margin-bottom: 5px;
+}

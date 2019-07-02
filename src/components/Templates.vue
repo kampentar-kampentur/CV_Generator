@@ -34,7 +34,7 @@ export default {
     return {
       personalDate: this.$store.state.personalDate,
       templates: styles,
-      templateStyle: styles.First,
+      templateStyle: styles.Second,
       count: 1
     };
   },

@@ -1,7 +1,7 @@
 <template>
   <div id="ready-cv" :class="templateStyle.class" class="ready-cv">
     <template v-if="templateStyle.css">
-      <link rel="stylesheet" :href="templateStyle.css">
+      <link rel="stylesheet" :href="templateStyle.css" />
     </template>
 
     <header class="resume-header clearfix">
@@ -34,18 +34,22 @@
     <aside class="resume-aside">
       <div class="personalInfo" v-if="personalDate.personalInfo.visible">
         <h2>Personal Info</h2>
-        <span class="address">
+        <div class="address-wrapper" v-show="personalDate.personalInfo.address">
           <h3>Address:</h3>
-          {{personalDate.personalInfo.address}}
-        </span>
-        <span class="phone">Number Phone: {{personalDate.personalInfo.phone}}</span>
-        <div class="socials">
-          <span
-            class="social"
-            :class="key"
-            v-for="(social, key) of personalDate.personalInfo.social"
-            :key="key"
-          >{{key + ': ' +social}}</span>
+          <span class="address">{{personalDate.personalInfo.address}}</span>
+        </div>
+        <div class="phone">
+          <h3>Phone:</h3>
+          {{personalDate.personalInfo.phone}}
+        </div>
+        <div
+          class="social"
+          :class="key"
+          v-for="(social, key) of personalDate.personalInfo.social"
+          :key="key"
+        >
+          <h3>{{key + ': '}}</h3>
+          <a :href="social">{{social}}</a>
         </div>
       </div>
     </aside>
