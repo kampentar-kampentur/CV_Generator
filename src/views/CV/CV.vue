@@ -1,7 +1,7 @@
 <template>
   <div class="cv-page">
-    <SidebarEditor @openModal="showModal = true" :cvsections="vizibleCVSections"/>
-    <router-view/>
+    <SidebarEditor @openModal="showModal = true" :cvsections="vizibleCVSections" />
+    <router-view />
     <Modal v-if="showModal" @closeModal="showModal = false">
       <h3 slot="header">Add Section</h3>
       <button
@@ -12,7 +12,7 @@
         :key="key"
         @click="addCVSection(key)"
       >
-        <font-awesome-icon :icon="section.icon"/>
+        <font-awesome-icon :icon="section.icon" />
         {{section.text}}
       </button>
     </Modal>
@@ -59,6 +59,15 @@ export default {
           },
           key: "experience",
           visible: this.$store.state.personalDate.experience.visible
+        },
+        skills: {
+          icon: ["fas", "cogs"],
+          text: "Skils",
+          to: {
+            name: "cv-skills"
+          },
+          key: "experience",
+          visible: this.$store.state.personalDate.skills.visible
         }
       }
     };

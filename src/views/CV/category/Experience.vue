@@ -2,7 +2,7 @@
   <main id="main-editor">
     <header class="head-main-editor">
       <div class="icon">
-        <font-awesome-icon :icon="['fas', 'briefcase']"/>
+        <font-awesome-icon :icon="['fas', 'briefcase']" />
       </div>
       <span>Experience</span>
     </header>
@@ -20,7 +20,7 @@
               type="text"
               :value="company.position"
               @change="onExpInfo({index, key: 'position', value: $event.target.value})"
-            >
+            />
           </label>
         </div>
         <div class="main-editor-input third">
@@ -30,7 +30,7 @@
               type="text"
               :value="company.company"
               @change="onExpInfo({index, key: 'company', value: $event.target.value})"
-            >
+            />
           </label>
         </div>
         <div class="main-editor-input third">
@@ -44,7 +44,8 @@
                 :max="new Date().getFullYear()"
                 step="1"
                 :value="company.dateFrom.year"
-              >
+                @change="onDate({index, key: 'dateFrom', yearOrMonth: 'year', value: $event.target.value})"
+              />
             </label>
           </div>
           <div class="main-editor-input half">
@@ -56,8 +57,8 @@
                 max="12"
                 step="1"
                 :value="company.dateFrom.month"
-                @change="onDate({index, key: 'dateFrom', key2: month, value: $event.target.value})"
-              >
+                @change="onDate({index, key: 'dateFrom', yearOrMonth: 'month', value: $event.target.value})"
+              />
             </label>
           </div>
           <h3>Date to:</h3>
@@ -66,17 +67,25 @@
               Year
               <input
                 type="number"
-                :min="new Date().getFullYear()"
+                min="1900"
                 max="2099"
                 step="1"
                 :value="company.dateTo.year"
-              >
+                @change="onDate({index, key: 'dateTo', yearOrMonth: 'year', value: $event.target.value})"
+              />
             </label>
           </div>
           <div class="main-editor-input half">
             <label for="year-to">
               Month
-              <input type="number" min="1" max="12" step="1" :value="company.dateTo.month">
+              <input
+                type="number"
+                min="1"
+                max="12"
+                step="1"
+                :value="company.dateTo.month"
+                @change="onDate({index, key: 'dateTo', yearOrMonth: 'month', value: $event.target.value})"
+              />
             </label>
           </div>
         </div>
@@ -93,7 +102,7 @@
         </div>
       </div>
       <button class="main-editor-button add-section" @click="addCompany">
-        <font-awesome-icon icon="plus-circle"/>Add Company
+        <font-awesome-icon icon="plus-circle" />Add Company
       </button>
     </main>
   </main>

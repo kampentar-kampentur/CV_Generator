@@ -52,6 +52,10 @@
           <a :href="social">{{social}}</a>
         </div>
       </div>
+      <div class="skills" v-if="personalDate.skills.visible">
+        <h2>Skills</h2>
+        <span>{{personalDate.skills.text}}</span>
+      </div>
     </aside>
     <div id="scripts"></div>
   </div>

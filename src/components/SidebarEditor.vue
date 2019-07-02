@@ -14,7 +14,7 @@
           :value="personalDate.title"
           @keyup.enter="onTitle"
           @blur="onTitle"
-        >
+        />
         <button class="sidebar-button">language</button>
       </div>
       <div class="cv-sections">
@@ -38,7 +38,7 @@
 <script>
 import CVSection from "./CVSection.vue";
 import { mapActions } from "vuex";
-import { CHANGE_TITLE } from "@/store/const";
+import { CHANGE_TITLE } from "../store/const";
 
 export default {
   components: {

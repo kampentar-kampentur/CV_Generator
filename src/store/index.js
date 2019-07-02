@@ -15,6 +15,8 @@ import {
   ADD_CV_SECTION,
   REMOVE_CV_SECTION,
   CHANGE_TITLE,
+  CHANGE_SOCIAL,
+  CHANGE_SKILLS,
 } from './const'
 
 Vue.use(Vuex)
@@ -31,8 +33,8 @@ export default new Vuex.Store({
         address: '',
         phone: '',
         social: {
-          twitter: 'yummyanime.club/catalog/item/propavshie-fei ',
-          github: 'yummyanime.club/catalog/item/propavshie-fei',
+          Twitter: 'yummyanime.club/catalog/item/propavshie-fei ',
+          GitHub: 'yummyanime.club/catalog/item/propavshie-fei',
         },
         visible: true,
       },
@@ -49,9 +51,8 @@ export default new Vuex.Store({
         ],
         visible: false
       },
+      skills: { text: '', visible: true },
     },
-    selectedTemplate: 'green',
-    templates: ['red', 'green']
   },
   mutations: {
     [CHANGE_FIRST_NAME](state, payload) {
@@ -69,9 +70,6 @@ export default new Vuex.Store({
     [CHANGE_PHONE](state, payload) {
       state.personalDate.personalInfo.phone = payload;
     },
-    [CHANGE_SUMMARY](state, payload) {
-      state.personalDate.summary.text = payload;
-    },
     [CHANGE_PHOTO](state, payload) {
       state.personalDate.personalInfo.photo = payload;
     },
@@ -82,7 +80,7 @@ export default new Vuex.Store({
       state.personalDate.experience.companies[payload.index][payload.key] = payload.value;
     },
     [CHANGE_DATE](state, payload) {
-      state.personalDate.experience.companies[payload.index][payload.key][payload.key] = payload.value;
+      state.personalDate.experience.companies[payload.index][payload.key][payload.yearOrMonth] = payload.value;
     },
     [ADD_CV_SECTION](state, payload) {
       state.personalDate[payload].visible = true;
@@ -92,6 +90,12 @@ export default new Vuex.Store({
     },
     [CHANGE_TITLE](state, payload) {
       state.personalDate.title = payload;
+    },
+    [CHANGE_SOCIAL](state, payload) {
+      state.personalDate.personalInfo.social[payload.key] = payload.value;
+    },
+    [CHANGE_SKILLS](state, payload) {
+      state.personalDate.skills.text = payload;
     },
   },
   actions: {
@@ -140,6 +144,13 @@ export default new Vuex.Store({
     },
     [CHANGE_TITLE](context, value) {
       context.commit(CHANGE_TITLE, value)
+    },
+    [CHANGE_SOCIAL](context, event) {
+      let payload = { key: event.target.id, value: event.target.value }
+      context.commit(CHANGE_SOCIAL, payload)
+    },
+    [CHANGE_SKILLS](context, event) {
+      context.commit(CHANGE_SKILLS, event.target.value)
     },
   },
   plugins: [createPersistedState()],

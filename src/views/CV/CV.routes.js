@@ -3,6 +3,7 @@ import CV from './CV'
 import Personal from './category/Personal.vue'
 import Summary from './category/Summary.vue'
 import Experience from './category/Experience.vue'
+import Skills from './category/Skills.vue'
 import Templates from '@/components/Templates.vue'
 
 
@@ -27,6 +28,11 @@ export default function () {
           path: 'experience',
           name: 'cv-experience',
           component: Experience,
+        },
+        {
+          path: 'skills',
+          name: 'cv-skills',
+          component: Skills,
         },
       ]
     },

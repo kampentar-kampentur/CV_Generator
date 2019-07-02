@@ -2,7 +2,7 @@
   <main id="main-editor">
     <header class="head-main-editor">
       <div class="icon">
-        <font-awesome-icon :icon="['fas', 'user']"/>
+        <font-awesome-icon :icon="['fas', 'user']" />
       </div>
       <span>Personal</span>
     </header>
@@ -14,7 +14,7 @@
           id="first-name"
           :value="personalDate.personalInfo.firstName"
           @change="onFirstName"
-        >
+        />
       </div>
       <div class="main-editor-input third">
         <label for="last-name">Last name</label>
@@ -23,13 +23,13 @@
           id="last-name"
           :value="personalDate.personalInfo.lastName"
           @change="onLastName"
-        >
+        />
       </div>
 
       <div class="main-editor-input third">
         <span>Add Photo</span>
         <label for="add-photo" class="main-editor-button">
-          <font-awesome-icon icon="camera"/>
+          <font-awesome-icon icon="camera" />
         </label>
         <input
           type="file"
@@ -38,7 +38,7 @@
           name="add-photo"
           id="add-photo"
           class="hidden"
-        >
+        />
       </div>
       <div class="main-editor-input profession">
         <label for="profession">Profession</label>
@@ -47,7 +47,7 @@
           id="profession"
           :value="personalDate.personalInfo.profession"
           @change="onPrfession"
-        >
+        />
       </div>
       <div class="main-editor-input">
         <label for="address">Address</label>
@@ -66,16 +66,25 @@
           :value="personalDate.personalInfo.phone"
           @change="onPhone"
           class="hide-spin"
-        >
+        />
       </div>
-      <div class="main-editor-input profession third">
-        <label for="twitter">Twitter</label>
-        <input type="text" id="twitter">
+      <div
+        class="main-editor-input profession third"
+        v-for="(social, key) of personalDate.personalInfo.social"
+        :key="key"
+      >
+        <label :for="key">{{key}}</label>
+        <input
+          type="text"
+          :id="key"
+          :value="personalDate.personalInfo.social[key]"
+          @change="onSocial"
+        />
       </div>
-      <div class="main-editor-input profession third">
+      <!-- <div class="main-editor-input profession third">
         <label for="facebook">FaceBook</label>
         <input type="text" id="facebook">
-      </div>
+      </div>-->
       <!-- <button class="main-editor-button add-section">
         <font-awesome-icon icon="plus-circle"/>Add Section
       </button>-->
@@ -91,7 +100,8 @@ import {
   CHANGE_PROFESSION,
   CHANGE_ADDRESS,
   CHANGE_PHONE,
-  CHANGE_PHOTO
+  CHANGE_PHOTO,
+  CHANGE_SOCIAL
 } from "@/store/const";
 
 export default {
@@ -114,7 +124,8 @@ export default {
       onPrfession: CHANGE_PROFESSION,
       onAddress: CHANGE_ADDRESS,
       onPhone: CHANGE_PHONE,
-      onPhoto: CHANGE_PHOTO
+      onPhoto: CHANGE_PHOTO,
+      onSocial: CHANGE_SOCIAL
     }),
     addSocial(key) {
       this.visibleSocial.push({ ...this.social[key], name: key });

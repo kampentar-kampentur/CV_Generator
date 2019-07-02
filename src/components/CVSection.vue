@@ -2,13 +2,13 @@
   <li class="cv-section">
     <router-link :to="section.to">
       <span>
-        <font-awesome-icon :icon="section.icon"/>
+        <font-awesome-icon :icon="section.icon" />
         {{section.text}}
       </span>
     </router-link>
     <div class="cv-sections-buttons">
       <button class="destroy-cv-section-button sidebar-button" @click="removeCVSection(sectionKey)">
-        <font-awesome-icon icon="times"/>
+        <font-awesome-icon icon="times" />
       </button>
     </div>
   </li>
