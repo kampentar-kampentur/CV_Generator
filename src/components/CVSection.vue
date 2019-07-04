@@ -7,7 +7,11 @@
       </span>
     </router-link>
     <div class="cv-sections-buttons">
-      <button class="destroy-cv-section-button sidebar-button" @click="removeCVSection(sectionKey)">
+      <button
+        class="destroy-cv-section-button sidebar-button"
+        @click="removeCVSection(sectionKey)"
+        v-if="section.key !== 'personalInfo'"
+      >
         <font-awesome-icon icon="times" />
       </button>
     </div>

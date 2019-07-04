@@ -93,7 +93,7 @@
           <label>
             Experience
             <textarea
-              name="address"
+              name="experience"
               rows="10"
               :value="company.experience"
               @change="onExpInfo({index, key: 'experience', value: $event.target.value})"

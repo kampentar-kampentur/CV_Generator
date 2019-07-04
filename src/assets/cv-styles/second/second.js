@@ -12,6 +12,6 @@
   header.appendChild(contacts)
   main.appendChild(aside.querySelector('.address-wrapper'))
   aside.removeChild(aside.querySelector('.personalInfo'))
-  for (let i = 0; i < aside.children.length; i++) main.appendChild(aside.children[i])
+  while (aside.children.length > 0) main.appendChild(aside.children[0])
   el.removeChild(aside)
 }())

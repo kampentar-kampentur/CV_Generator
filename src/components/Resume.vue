@@ -56,6 +56,30 @@
         <h2>Skills</h2>
         <span>{{personalDate.skills.text}}</span>
       </div>
+      <div class="languages" v-if="personalDate.languages.visible">
+        <h2>Languages</h2>
+        <div
+          v-for="(language, index) in personalDate.languages.list"
+          :key="index"
+        >{{personalDate.languages.list[index].language}} - {{personalDate.languages.list[index].level}}</div>
+      </div>
+      <div class="experience" v-if="personalDate.education.visible">
+        <h2>Education</h2>
+        <div
+          class="institution"
+          v-for="(institution, index) in personalDate.education.list"
+          :key="index"
+        >
+          <div class="study-period">
+            <span>{{institution.data.from}} - {{institution.data.to}}</span>
+          </div>
+          <div class="experience-info">
+            <span class="course">{{institution.course}}</span>
+            <span class="institution-name">{{institution.institution}}</span>
+            <span class="information">{{institution.information}}</span>
+          </div>
+        </div>
+      </div>
     </aside>
     <div id="scripts"></div>
   </div>

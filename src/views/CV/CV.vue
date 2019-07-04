@@ -62,12 +62,30 @@ export default {
         },
         skills: {
           icon: ["fas", "cogs"],
-          text: "Skils",
+          text: "Skills",
           to: {
             name: "cv-skills"
           },
-          key: "experience",
+          key: "skills",
           visible: this.$store.state.personalDate.skills.visible
+        },
+        languages: {
+          icon: ["fas", "language"],
+          text: "Languages",
+          to: {
+            name: "cv-languages"
+          },
+          key: "languages",
+          visible: this.$store.state.personalDate.languages.visible
+        },
+        education: {
+          icon: ["fas", "university"],
+          text: "Education",
+          to: {
+            name: "cv-education"
+          },
+          key: "education",
+          visible: this.$store.state.personalDate.education.visible
         }
       }
     };

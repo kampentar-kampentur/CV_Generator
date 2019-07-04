@@ -8,10 +8,10 @@
     </header>
     <main class="section-content">
       <div class="main-editor-input">
-        <label for="address">Skills</label>
+        <label for="skills">Skills</label>
         <textarea
-          name="address"
-          id="address"
+          name="skills"
+          id="skills"
           rows="5"
           :value="personalDate.skills.text"
           @change="onSkills"

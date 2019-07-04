@@ -17,6 +17,10 @@ import {
   CHANGE_TITLE,
   CHANGE_SOCIAL,
   CHANGE_SKILLS,
+  ADD_LANGUAGE,
+  CHANGE_LANGUAGE,
+  ADD_EDUCATION,
+  CHANGE_EDUCATION_INFO,
 } from './const'
 
 Vue.use(Vuex)
@@ -52,6 +56,8 @@ export default new Vuex.Store({
         visible: false
       },
       skills: { text: '', visible: true },
+      languages: { list: [{ language: 'aa', level: '11' }], visible: true },
+      education: { list: [{ course: '', institution: '', information: '', data: { from: 2010, to: 2014 } }], visible: true }
     },
   },
   mutations: {
@@ -72,6 +78,9 @@ export default new Vuex.Store({
     },
     [CHANGE_PHOTO](state, payload) {
       state.personalDate.personalInfo.photo = payload;
+    },
+    [CHANGE_SUMMARY](state, payload) {
+      state.personalDate.summary.text = payload;
     },
     [ADD_COMPANY](state, payload) {
       state.personalDate.experience.companies.push(payload);
@@ -96,6 +105,18 @@ export default new Vuex.Store({
     },
     [CHANGE_SKILLS](state, payload) {
       state.personalDate.skills.text = payload;
+    },
+    [ADD_LANGUAGE](state, payload) {
+      state.personalDate.languages.list.push(payload);
+    },
+    [CHANGE_LANGUAGE](state, payload) {
+      state.personalDate.languages.list[payload.index][payload.key] = payload.value;
+    },
+    [ADD_EDUCATION](state, payload) {
+      state.personalDate.education.list.push(payload);
+    },
+    [CHANGE_EDUCATION_INFO](state, payload) {
+      state.personalDate.education.list[payload.index][payload.key] = payload.value;
     },
   },
   actions: {
@@ -130,9 +151,6 @@ export default new Vuex.Store({
       };
       context.commit(ADD_COMPANY, newCompany)
     },
-    [CHANGE_EXPERIENCE_INFO](context, payload) {
-      context.commit(CHANGE_EXPERIENCE_INFO, payload)
-    },
     [CHANGE_DATE](context, payload) {
       context.commit(CHANGE_DATE, payload)
     },
@@ -151,6 +169,28 @@ export default new Vuex.Store({
     },
     [CHANGE_SKILLS](context, event) {
       context.commit(CHANGE_SKILLS, event.target.value)
+    },
+    [ADD_LANGUAGE](context) {
+      let newLanguage = {
+        language: '',
+        level: '',
+      };
+      context.commit(ADD_LANGUAGE, newLanguage)
+    },
+    [CHANGE_LANGUAGE](context, payload) {
+      context.commit(CHANGE_LANGUAGE, payload)
+    },
+    [ADD_EDUCATION](context) {
+      let newEducation = {
+        course: '',
+        institution: '',
+        information: '',
+        data: { from: 2010, to: 2014 }
+      };
+      context.commit(ADD_EDUCATION, newEducation)
+    },
+    [CHANGE_EDUCATION_INFO](context, payload) {
+      context.commit(CHANGE_EDUCATION_INFO, payload)
     },
   },
   plugins: [createPersistedState()],

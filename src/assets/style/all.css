@@ -118,6 +118,7 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    height: 33.75px;
 }
 
 .cv-sections .cv-section a:hover {
@@ -341,7 +342,7 @@ a {
     margin-bottom: 10px;
 }
 
-.company {
+.company, .education {
     display: block;
     width: 100%;
 }
