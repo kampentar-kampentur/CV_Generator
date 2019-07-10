@@ -1,40 +1,39 @@
 <template>
   <div class="templates">
-    <Resume ref="resume" :templateStyle="templateStyle" :key="templateStyle.js"/>
-
+    <router-view />
     <div class="templates-main">
       <div class="change-template-wrapper">
         <h2>Templates:</h2>
-        <button
+        <router-link
           v-for="(tamplate, key) in templates"
           :key="key"
-          @click="changeTemplate(templates[key])"
           class="template-button"
-          :class="{'changed-template': templates[key] === templateStyle}"
-        >{{key}}</button>
+          :to="{name: tamplate.path}"
+        >{{tamplate.name}}</router-link>
       </div>
       <button @click="convertToPDF" class="main-editor-button">
-        <font-awesome-icon :icon="['fas', 'file-download']"/>Download PDF
+        <div class="icon"><font-awesome-icon :icon="['fas', 'file-download']" /></div>Download PDF
       </button>
+      <router-link
+          class="main-editor-button"
+          :to="{name: 'cv-personal'}"
+        ><div class="icon"><font-awesome-icon :icon="['fas', 'user'] "/></div>Go Back</router-link>
+      </div>
     </div>
-    <!-- <button @click="print">Print</button> -->
   </div>
 </template>
 
 <script>
-import Resume from "./Resume.vue";
-import styles from "../assets/cv-styles";
 import html2pdf from "html2pdf.js";
 
 export default {
-  components: {
-    Resume
-  },
   data() {
     return {
       personalDate: this.$store.state.personalDate,
-      templates: styles,
-      templateStyle: styles.Second,
+      templates: [
+        { name: "First", path: "first-template" },
+        { name: "Second", path: "second-template" }
+      ],
       count: 1
     };
   },
@@ -60,10 +59,6 @@ export default {
         .set(opt)
         .from(element)
         .save();
-    },
-    changeTemplate(template) {
-      this.templateStyle = template;
-      this.count++;
     }
   }
 };

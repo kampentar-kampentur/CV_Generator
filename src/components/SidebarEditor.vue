@@ -14,6 +14,7 @@
           :value="personalDate.title"
           @keyup.enter="onTitle"
           @blur="onTitle"
+          autofocus
         />
         <button class="sidebar-button">language</button>
       </div>
@@ -30,7 +31,7 @@
       </div>
     </div>
     <div class="sidebar-footer">
-      <router-link :to="{name: 'templates'}" class="submit-button">submit</router-link>
+      <router-link :to="{name: 'first-template'}" class="submit-button">submit</router-link>
     </div>
   </aside>
 </template>

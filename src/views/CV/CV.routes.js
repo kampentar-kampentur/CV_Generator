@@ -7,6 +7,8 @@ import Skills from './category/Skills.vue'
 import Languages from './category/Languages.vue'
 import Education from './category/Education.vue'
 import Templates from '@/components/Templates.vue'
+import First from '@/assets/cv-styles/first/First.vue'
+import Second from '@/assets/cv-styles/second/Second.vue'
 
 
 export default function () {
@@ -54,9 +56,14 @@ export default function () {
       component: Templates,
       children: [
         {
-          path: 'print',
-          name: 'print',
-          component: Personal
+          path: 'first',
+          name: 'first-template',
+          component: First
+        },
+        {
+          path: 'second',
+          name: 'second-template',
+          component: Second
         },
       ]
     }
